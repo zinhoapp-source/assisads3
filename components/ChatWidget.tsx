@@ -1,5 +1,6 @@
+
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, Headset } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, MessageCircle } from 'lucide-react';
 import { sendMessageToGemini } from '../services/geminiService';
 import { ChatMessage } from '../types';
 
@@ -69,7 +70,7 @@ export const ChatWidget: React.FC = () => {
           <div className="bg-dark-900 p-4 flex justify-between items-center border-b border-dark-700">
             <div className="flex items-center gap-3">
               <div className="bg-primary-600/20 p-2 rounded-full border border-primary-500/30">
-                <Headset size={18} className="text-primary-500" />
+                <MessageCircle size={18} className="text-primary-500" />
               </div>
               <div>
                 <h3 className="font-bold text-sm text-white">Suporte AssisAds</h3>
