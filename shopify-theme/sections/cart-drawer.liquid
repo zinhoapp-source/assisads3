@@ -1,0 +1,37 @@
+<div class="drawer drawer--right cart-drawer" id="cart-drawer" aria-hidden="true">
+  <div class="drawer__overlay" data-drawer-close></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'cart.title' | t }}" data-cart-drawer-inner>
+    <div class="drawer__header">
+      <span class="drawer__title">{{ 'cart.title' | t }} ({{ cart.item_count }})</span>
+      <button type="button" class="drawer__close" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+    </div>
+
+    {% render 'free-shipping-bar' %}
+
+    <div class="drawer__body">
+      {%- if cart.item_count > 0 -%}
+        {% render 'cart-line-items' %}
+        {% render 'cart-upsell' %}
+      {%- else -%}
+        <div class="cart-empty">
+          {% render 'icon', name: 'cart' %}
+          <p>{{ 'cart.empty' | t }}</p>
+          <a href="{{ routes.all_products_collection_url }}" class="btn">{{ 'cart.continue' | t }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <div class="drawer__footer">
+        {% render 'cart-summary' %}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Carrinho lateral",
+  "settings": []
+}
+{% endschema %}

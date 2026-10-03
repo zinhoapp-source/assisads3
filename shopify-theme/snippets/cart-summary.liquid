@@ -1,0 +1,34 @@
+{%- comment -%} Resumo e botão de checkout (usado na gaveta e na página). {%- endcomment -%}
+<div class="cart-summary">
+  {%- if cart.cart_level_discount_applications.size > 0 -%}
+    <ul class="cart-summary__discounts">
+      {%- for discount in cart.cart_level_discount_applications -%}
+        <li>{% render 'icon', name: 'gift' %} {{ discount.title }} <strong>-{{ discount.total_allocated_amount | money }}</strong></li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+  <div class="cart-summary__row">
+    <span>{{ 'cart.subtotal' | t }}</span>
+    <strong>{{ cart.total_price | money }}</strong>
+  </div>
+  {%- if cart.total_discount > 0 -%}
+    {%- assign total_saved = cart.total_discount | money -%}
+    <p class="cart-summary__saved">{{ 'products.you_save_html' | t: amount: total_saved }}</p>
+  {%- endif -%}
+  <p class="cart-summary__note">{{ 'cart.taxes' | t }}</p>
+  <form action="{{ routes.cart_url }}" method="post">
+    <button type="submit" name="checkout" class="btn btn--large btn--block btn--atc">
+      {% render 'icon', name: 'lock' %} {{ 'cart.checkout' | t }}
+    </button>
+  </form>
+  {%- if settings.cart_trust_text != blank -%}
+    <p class="cart-summary__trust">{% render 'icon', name: 'shield' %} {{ settings.cart_trust_text }}</p>
+  {%- endif -%}
+  {%- if settings.cart_payment_image != blank -%}
+    {{ settings.cart_payment_image | image_url: width: 600 | image_tag: class: 'cart-summary__payments', loading: 'lazy', alt: 'Formas de pagamento' }}
+  {%- else -%}
+    <ul class="footer__payments cart-summary__icons">
+      {%- for type in shop.enabled_payment_types -%}<li>{{ type | payment_type_svg_tag: class: 'payment-icon' }}</li>{%- endfor -%}
+    </ul>
+  {%- endif -%}
+</div>

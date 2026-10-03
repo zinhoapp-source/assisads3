@@ -1,0 +1,52 @@
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+  <div class="page-width image-text{% if section.settings.image_right %} image-text--reverse{% endif %}">
+    <div class="image-text__media" data-animate>
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1400 | image_tag:
+          widths: '500, 800, 1100, 1400',
+          sizes: '(min-width: 990px) 50vw, 100vw',
+          loading: 'lazy',
+          alt: section.settings.image.alt | escape
+        }}
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+      {%- endif -%}
+    </div>
+    <div class="image-text__content" data-animate>
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="section__title">{{ section.settings.heading }}</h2>{%- endif -%}
+      <div class="rte">{{ section.settings.text }}</div>
+      {%- if section.settings.items != blank -%}
+        <ul class="benefits">
+          {%- assign lines = section.settings.items | newline_to_br | split: '<br />' -%}
+          {%- for line in lines -%}
+            {%- assign clean = line | strip -%}
+            {%- if clean != blank -%}<li>{% render 'icon', name: 'check' %}<span>{{ clean }}</span></li>{%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link }}" class="btn btn--large">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Imagem com texto",
+  "class": "section-image-text",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagem" },
+    { "type": "checkbox", "id": "image_right", "label": "Imagem à direita", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Texto pequeno acima", "default": "POR QUE ESCOLHER A GENTE" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Feito para resolver o seu problema" },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Explique aqui o principal benefício do seu produto e por que ele é diferente dos outros.</p>" },
+    { "type": "textarea", "id": "items", "label": "Lista de benefícios (um por linha)", "default": "Benefício número 1\nBenefício número 2\nBenefício número 3" },
+    { "type": "text", "id": "button_label", "label": "Botão", "default": "QUERO O MEU" },
+    { "type": "url", "id": "button_link", "label": "Link do botão" },
+    { "type": "checkbox", "id": "alt_bg", "label": "Fundo alternativo", "default": false }
+  ],
+  "presets": [{ "name": "Imagem com texto" }]
+}
+{% endschema %}

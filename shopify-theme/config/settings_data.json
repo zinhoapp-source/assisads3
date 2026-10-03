@@ -1,0 +1,30 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "color_primary": "#111111",
+      "color_primary_contrast": "#FFFFFF",
+      "color_accent": "#FF5A1F",
+      "color_sale": "#E11D48",
+      "color_success": "#16A34A",
+      "color_text": "#121212",
+      "color_background": "#FFFFFF",
+      "color_background_alt": "#F6F6F4",
+      "type_heading_font": "poppins_n7",
+      "type_body_font": "inter_n4",
+      "page_width": 1280,
+      "radius": 12,
+      "button_radius": 8,
+      "animations": true,
+      "card_show_second_image": true,
+      "card_show_discount_badge": true,
+      "card_show_rating": true,
+      "card_quick_add": true,
+      "cart_type": "drawer",
+      "free_shipping_enabled": true,
+      "free_shipping_threshold": 199,
+      "cart_upsell_title": "Aproveite e leve também",
+      "cart_trust_text": "Compra 100% segura · Pix, cartão e boleto"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{%- comment -%}
+  Preço com valor riscado e selo de desconto.
+  Parâmetros:
+  - product: objeto do produto (obrigatório)
+  - variant: variante (opcional, padrão: selected_or_first_available_variant)
+  - show_badge: mostra o selo "-XX%" (padrão: true)
+  - show_savings: mostra "Você economiza R$ X" (padrão: false)
+  - size: 'large' para a página de produto
+{%- endcomment -%}
+{%- liquid
+  assign target = variant | default: product.selected_or_first_available_variant
+  assign price = target.price
+  assign compare_at = target.compare_at_price
+  if variant == blank and product.price_varies
+    assign price = product.price_min
+    assign compare_at = product.compare_at_price_min
+  endif
+  assign on_sale = false
+  assign savings = 0
+  assign percent = 0
+  if compare_at > price
+    assign on_sale = true
+    assign savings = compare_at | minus: price
+    assign percent = savings | times: 100.0 | divided_by: compare_at | round
+  endif
+  assign savings_money = savings | money | prepend: '<span data-savings-amount>' | append: '</span>'
+-%}
+<div class="price{% if on_sale %} price--sale{% endif %}{% if size == 'large' %} price--large{% endif %}" data-price>
+  {%- if variant == blank and product.price_varies -%}
+    <span class="price__from">{{ 'products.from' | t }}</span>
+  {%- endif -%}
+  <span class="price__current" data-price-current>{{ price | money }}</span>
+  <s class="price__compare" data-price-compare {% unless on_sale %}hidden{% endunless %}>{{ compare_at | money }}</s>
+  {%- unless show_badge == false -%}
+    <span class="badge badge--sale price__badge" data-price-badge {% unless on_sale %}hidden{% endunless %}>
+      {{- 'products.save' | t: percent: percent -}}
+    </span>
+  {%- endunless -%}
+  {%- if show_savings -%}
+    <p class="price__savings" data-price-savings {% unless on_sale %}hidden{% endunless %}>
+      {{ 'products.you_save_html' | t: amount: savings_money }}
+    </p>
+  {%- endif -%}
+</div>

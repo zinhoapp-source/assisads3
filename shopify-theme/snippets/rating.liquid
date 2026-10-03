@@ -1,0 +1,23 @@
+{%- comment -%}
+  Estrelas de avaliação a partir dos metacampos padrão de avaliações
+  (reviews.rating e reviews.rating_count), preenchidos por apps como
+  Judge.me, Loox, Yotpo e Product Reviews.
+  Parâmetros: product
+{%- endcomment -%}
+{%- if product.metafields.reviews.rating.value != blank -%}
+  {%- liquid
+    assign rating = product.metafields.reviews.rating.value.rating | default: 0
+    assign scale = product.metafields.reviews.rating.value.scale_max | default: 5
+    assign rating_pct = rating | times: 100.0 | divided_by: scale
+    assign count = product.metafields.reviews.rating_count.value | default: 0
+  -%}
+  <div class="rating" aria-label="{{ rating | round: 1 }} / {{ scale }}">
+    <span class="rating__stars" style="--rating: {{ rating_pct }}%;">
+      <span class="rating__bg">{%- for i in (1..5) -%}{% render 'icon', name: 'star' %}{%- endfor -%}</span>
+      <span class="rating__fill">{%- for i in (1..5) -%}{% render 'icon', name: 'star' %}{%- endfor -%}</span>
+    </span>
+    {%- if count > 0 -%}
+      <span class="rating__count">({{ count }})</span>
+    {%- endif -%}
+  </div>
+{%- endif -%}

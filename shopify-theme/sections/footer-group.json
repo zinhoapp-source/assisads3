@@ -1,0 +1,30 @@
+{
+  "type": "footer",
+  "name": "Grupo do rodapé",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "about": {
+          "type": "text",
+          "settings": {
+            "title": "Sobre a loja",
+            "text": "<p>Produtos selecionados com qualidade garantida, entrega rápida e atendimento humanizado.</p>"
+          }
+        },
+        "menu-1": { "type": "menu", "settings": { "title": "Institucional", "menu": "footer" } },
+        "contact": {
+          "type": "text",
+          "settings": {
+            "title": "Atendimento",
+            "text": "<p>Seg. a sex. das 9h às 18h<br>contato@sualoja.com.br</p>"
+          }
+        },
+        "newsletter": { "type": "newsletter", "settings": { "title": "Receba ofertas exclusivas" } }
+      },
+      "block_order": ["about", "menu-1", "contact", "newsletter"],
+      "settings": {}
+    }
+  },
+  "order": ["footer"]
+}

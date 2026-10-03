@@ -1,0 +1,37 @@
+<section class="page-width section main-cart" data-main-cart>
+  <h1 class="section__title">{{ 'cart.title' | t }}</h1>
+
+  {%- if cart.item_count > 0 -%}
+    <div class="main-cart__grid">
+      <div class="main-cart__items">
+        {% render 'free-shipping-bar' %}
+        {% render 'cart-line-items' %}
+        {% render 'cart-upsell' %}
+        {%- if section.settings.show_note -%}
+          <form action="{{ routes.cart_url }}" method="post" class="main-cart__note">
+            <label for="CartNote">{{ 'cart.note' | t }}</label>
+            <textarea id="CartNote" name="note" rows="3" data-cart-note>{{ cart.note }}</textarea>
+          </form>
+        {%- endif -%}
+      </div>
+      <aside class="main-cart__summary">
+        {% render 'cart-summary' %}
+      </aside>
+    </div>
+  {%- else -%}
+    <div class="cart-empty">
+      {% render 'icon', name: 'cart' %}
+      <p>{{ 'cart.empty' | t }}</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn">{{ 'cart.continue' | t }}</a>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Carrinho",
+  "settings": [
+    { "type": "checkbox", "id": "show_note", "label": "Campo de observações do pedido", "default": false }
+  ]
+}
+{% endschema %}

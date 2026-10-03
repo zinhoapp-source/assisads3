@@ -1,0 +1,88 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Vertex",
+    "theme_version": "1.0.0",
+    "theme_author": "AssisAds",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/manual/online-store/themes"
+  },
+  {
+    "name": "Cores",
+    "settings": [
+      { "type": "color", "id": "color_primary", "label": "Cor principal (botões)", "default": "#111111" },
+      { "type": "color", "id": "color_primary_contrast", "label": "Texto dos botões", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_accent", "label": "Cor de destaque (selos, barras)", "default": "#FF5A1F" },
+      { "type": "color", "id": "color_sale", "label": "Cor de promoção", "default": "#E11D48" },
+      { "type": "color", "id": "color_success", "label": "Cor de sucesso (estoque, frete grátis)", "default": "#16A34A" },
+      { "type": "color", "id": "color_text", "label": "Texto", "default": "#121212" },
+      { "type": "color", "id": "color_background", "label": "Fundo", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_background_alt", "label": "Fundo alternativo (seções)", "default": "#F6F6F4" }
+    ]
+  },
+  {
+    "name": "Tipografia",
+    "settings": [
+      { "type": "font_picker", "id": "type_heading_font", "label": "Fonte dos títulos", "default": "poppins_n7" },
+      { "type": "font_picker", "id": "type_body_font", "label": "Fonte do texto", "default": "inter_n4" }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      { "type": "range", "id": "page_width", "label": "Largura máxima da página", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1280 },
+      { "type": "range", "id": "radius", "label": "Arredondamento de cartões e imagens", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 12 },
+      { "type": "range", "id": "button_radius", "label": "Arredondamento dos botões", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 8 },
+      { "type": "checkbox", "id": "animations", "label": "Animações ao rolar a página", "default": true }
+    ]
+  },
+  {
+    "name": "Cartões de produto",
+    "settings": [
+      { "type": "checkbox", "id": "card_show_second_image", "label": "Mostrar segunda imagem ao passar o mouse", "default": true },
+      { "type": "checkbox", "id": "card_show_discount_badge", "label": "Mostrar selo de desconto (%)", "default": true },
+      { "type": "checkbox", "id": "card_show_rating", "label": "Mostrar estrelas de avaliação", "default": true, "info": "Usa o metacampo de avaliações do produto (reviews.rating), preenchido por apps de avaliação como Judge.me ou Loox." },
+      { "type": "checkbox", "id": "card_quick_add", "label": "Botão de adicionar rápido", "default": true }
+    ]
+  },
+  {
+    "name": "Carrinho",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Tipo de carrinho",
+        "options": [
+          { "value": "drawer", "label": "Gaveta lateral (recomendado)" },
+          { "value": "page", "label": "Página" }
+        ],
+        "default": "drawer"
+      },
+      { "type": "header", "content": "Barra de frete grátis" },
+      { "type": "checkbox", "id": "free_shipping_enabled", "label": "Mostrar barra de progresso de frete grátis", "default": true },
+      { "type": "number", "id": "free_shipping_threshold", "label": "Valor mínimo para frete grátis", "default": 199, "info": "Use o mesmo valor configurado em Configurações > Frete e entrega." },
+      { "type": "header", "content": "Oferta no carrinho (upsell)" },
+      { "type": "product", "id": "cart_upsell_product", "label": "Produto sugerido" },
+      { "type": "text", "id": "cart_upsell_title", "label": "Título", "default": "Aproveite e leve também" },
+      { "type": "header", "content": "Selos de confiança" },
+      { "type": "text", "id": "cart_trust_text", "label": "Texto abaixo do botão de finalizar", "default": "Compra 100% segura · Pix, cartão e boleto" },
+      { "type": "image_picker", "id": "cart_payment_image", "label": "Imagem das formas de pagamento" }
+    ]
+  },
+  {
+    "name": "Redes sociais e contato",
+    "settings": [
+      { "type": "text", "id": "whatsapp_number", "label": "WhatsApp (botão flutuante)", "info": "Somente números com DDI e DDD. Ex.: 5511999999999. Deixe vazio para ocultar." },
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_facebook", "label": "Facebook" },
+      { "type": "url", "id": "social_tiktok", "label": "TikTok" },
+      { "type": "url", "id": "social_youtube", "label": "YouTube" }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      { "type": "image_picker", "id": "favicon", "label": "Ícone da aba (32x32px)" }
+    ]
+  }
+]

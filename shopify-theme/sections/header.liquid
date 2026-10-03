@@ -1,0 +1,110 @@
+<header class="header{% if section.settings.sticky %} header--sticky{% endif %}" data-header>
+  <div class="page-width header__inner">
+    <button class="header__icon header__menu-toggle" type="button" data-drawer-open="menu-drawer" aria-label="{{ 'general.menu' | t }}">
+      {% render 'icon', name: 'menu' %}
+    </button>
+
+    <a href="{{ routes.root_url }}" class="header__logo" style="--logo-width: {{ section.settings.logo_width }}px;">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 600 | image_tag:
+          widths: '150, 200, 300, 400, 600',
+          sizes: '(min-width: 750px) 300px, 150px',
+          alt: shop.name,
+          loading: 'eager'
+        }}
+      {%- else -%}
+        <span class="header__logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="header__nav" aria-label="Principal">
+      <ul class="header__menu">
+        {%- for link in section.settings.menu.links -%}
+          <li class="header__menu-item{% if link.links != blank %} has-dropdown{% endif %}">
+            <a href="{{ link.url }}" class="header__menu-link{% if link.active %} is-active{% endif %}">
+              {{ link.title }}
+              {%- if link.links != blank %}{% render 'icon', name: 'chevron' %}{% endif -%}
+            </a>
+            {%- if link.links != blank -%}
+              <ul class="header__dropdown">
+                {%- for child in link.links -%}
+                  <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <div class="header__icons">
+      <button class="header__icon" type="button" data-search-toggle aria-label="{{ 'general.search' | t }}">
+        {% render 'icon', name: 'search' %}
+      </button>
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="header__icon header__icon--account" href="{{ routes.account_url }}" aria-label="{{ 'general.account' | t }}">
+          {% render 'icon', name: 'account' %}
+        </a>
+      {%- endif -%}
+      <a class="header__icon header__cart" href="{{ routes.cart_url }}" data-cart-open aria-label="{{ 'cart.title' | t }}">
+        {% render 'icon', name: 'cart' %}
+        <span class="header__cart-count{% if cart.item_count == 0 %} is-empty{% endif %}" data-cart-count>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="header__search" data-search-panel hidden>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="page-width header__search-form">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search_placeholder' | t }}" aria-label="{{ 'general.search' | t }}">
+      <input type="hidden" name="type" value="product">
+      <button type="submit" class="btn">{{ 'general.search' | t }}</button>
+    </form>
+  </div>
+</header>
+
+<div class="drawer drawer--left" id="menu-drawer" aria-hidden="true">
+  <div class="drawer__overlay" data-drawer-close></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'general.menu' | t }}">
+    <div class="drawer__header">
+      <span class="drawer__title">{{ 'general.menu' | t }}</span>
+      <button type="button" class="drawer__close" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+    </div>
+    <nav class="drawer__body mobile-menu">
+      <ul>
+        {%- for link in section.settings.menu.links -%}
+          <li>
+            {%- if link.links != blank -%}
+              <details>
+                <summary>{{ link.title }} {% render 'icon', name: 'chevron' %}</summary>
+                <ul>
+                  <li><a href="{{ link.url }}">{{ 'general.view_all' | t }}</a></li>
+                  {%- for child in link.links -%}
+                    <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              </details>
+            {%- else -%}
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+        {%- if shop.customer_accounts_enabled -%}
+          <li><a href="{{ routes.account_url }}">{{ 'general.account' | t }}</a></li>
+        {%- endif -%}
+      </ul>
+    </nav>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cabeçalho",
+  "class": "section-header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "range", "id": "logo_width", "label": "Largura do logo", "min": 60, "max": 300, "step": 10, "unit": "px", "default": 140 },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "checkbox", "id": "sticky", "label": "Fixar cabeçalho ao rolar", "default": true }
+  ]
+}
+{% endschema %}

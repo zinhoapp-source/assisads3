@@ -1,0 +1,31 @@
+{%- liquid
+  assign upsell = settings.cart_upsell_product
+  assign in_cart = false
+  if upsell != blank
+    for item in cart.items
+      if item.product_id == upsell.id
+        assign in_cart = true
+        break
+      endif
+    endfor
+  endif
+-%}
+{%- if upsell != blank and upsell.available and in_cart == false -%}
+  {%- assign up_variant = upsell.selected_or_first_available_variant -%}
+  <div class="upsell">
+    <p class="upsell__title">{{ settings.cart_upsell_title }}</p>
+    <div class="upsell__card">
+      {%- if upsell.featured_media -%}
+        {{ upsell.featured_media | image_url: width: 160 | image_tag: loading: 'lazy', alt: upsell.title | escape }}
+      {%- endif -%}
+      <div class="upsell__info">
+        <a href="{{ upsell.url }}">{{ upsell.title }}</a>
+        {% render 'price', product: upsell, variant: up_variant %}
+      </div>
+      {%- form 'product', upsell, class: 'upsell__form' -%}
+        <input type="hidden" name="id" value="{{ up_variant.id }}">
+        <button type="submit" class="btn btn--small" data-add-button>+ {{ 'products.quick_add' | t }}</button>
+      {%- endform -%}
+    </div>
+  </div>
+{%- endif -%}

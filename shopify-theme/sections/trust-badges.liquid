@@ -1,0 +1,68 @@
+<section class="section section--tight{% if section.settings.alt_bg %} section--alt{% endif %}">
+  <div class="page-width">
+    <ul class="trust-row">
+      {%- for block in section.blocks -%}
+        <li class="trust-row__item" data-animate {{ block.shopify_attributes }}>
+          <span class="trust-row__icon">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 96 | image_tag: loading: 'lazy', alt: '' }}
+            {%- else -%}
+              {% render 'icon', name: block.settings.icon %}
+            {%- endif -%}
+          </span>
+          <span>
+            <strong>{{ block.settings.title }}</strong>
+            {%- if block.settings.text != blank -%}<small>{{ block.settings.text }}</small>{%- endif -%}
+          </span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Selos de confiança",
+  "class": "section-trust",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "checkbox", "id": "alt_bg", "label": "Fundo alternativo", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Selo",
+      "settings": [
+        {
+          "type": "select", "id": "icon", "label": "Ícone",
+          "options": [
+            { "value": "truck", "label": "Caminhão" },
+            { "value": "shield", "label": "Escudo" },
+            { "value": "lock", "label": "Cadeado" },
+            { "value": "return", "label": "Troca" },
+            { "value": "chat", "label": "Atendimento" },
+            { "value": "gift", "label": "Presente" },
+            { "value": "box", "label": "Caixa" },
+            { "value": "heart", "label": "Coração" }
+          ],
+          "default": "truck"
+        },
+        { "type": "image_picker", "id": "image", "label": "Ou imagem personalizada" },
+        { "type": "text", "id": "title", "label": "Título", "default": "Frete grátis" },
+        { "type": "text", "id": "text", "label": "Texto", "default": "Para todo o Brasil" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Selos de confiança",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "truck", "title": "Frete grátis", "text": "Para todo o Brasil" } },
+        { "type": "badge", "settings": { "icon": "lock", "title": "Compra segura", "text": "Site protegido com SSL" } },
+        { "type": "badge", "settings": { "icon": "return", "title": "Troca fácil", "text": "7 dias para devolução" } },
+        { "type": "badge", "settings": { "icon": "chat", "title": "Suporte", "text": "Atendimento humanizado" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

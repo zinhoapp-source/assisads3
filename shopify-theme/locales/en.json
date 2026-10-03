@@ -1,0 +1,73 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "page": "Page {{ page }}",
+    "search": "Search",
+    "search_placeholder": "What are you looking for?",
+    "menu": "Menu",
+    "close": "Close",
+    "account": "Account",
+    "view_all": "View all",
+    "previous": "Previous",
+    "next": "Next",
+    "back_home": "Back to store",
+    "read_more": "Read more"
+  },
+  "products": {
+    "add_to_cart": "Add to cart",
+    "adding": "Adding...",
+    "buy_now": "Buy now",
+    "sold_out": "Sold out",
+    "unavailable": "Unavailable",
+    "sale": "Sale",
+    "save": "-{{ percent }}%",
+    "you_save_html": "You save {{ amount }}",
+    "quantity": "Quantity",
+    "from": "From",
+    "reviews": "{{ count }} reviews",
+    "stock_low": "Only {{ count }} left in stock!",
+    "stock_ok": "In stock, ready to ship",
+    "delivery_html": "Arrives between <strong data-delivery-from></strong> and <strong data-delivery-to></strong>",
+    "choose_option": "Choose an option",
+    "quick_add": "Add"
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty",
+    "continue": "Continue shopping",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "taxes": "Shipping and discounts calculated at checkout.",
+    "free_shipping_remaining_html": "You are <strong>{{ amount }}</strong> away from <strong>FREE SHIPPING</strong>",
+    "free_shipping_unlocked_html": "You unlocked <strong>FREE SHIPPING</strong> 🎉",
+    "note": "Order notes",
+    "discounts": "Discounts"
+  },
+  "collections": {
+    "empty": "No products found in this collection.",
+    "sort_by": "Sort by",
+    "filter": "Filter",
+    "products_count": "{{ count }} products",
+    "clear": "Clear filters",
+    "apply": "Apply"
+  },
+  "search": {
+    "title": "Search",
+    "results": "{{ count }} results for \"{{ terms }}\"",
+    "no_results": "No results for \"{{ terms }}\". Try another word."
+  },
+  "blogs": {
+    "by": "by {{ author }}",
+    "back": "Back to blog"
+  },
+  "not_found": {
+    "title": "Page not found",
+    "text": "The page you are looking for does not exist."
+  },
+  "newsletter": {
+    "email": "Your email",
+    "subscribe": "Subscribe",
+    "success": "Thanks for subscribing!"
+  }
+}

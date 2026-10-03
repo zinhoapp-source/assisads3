@@ -1,0 +1,72 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "rating": { "type": "rating", "settings": {} },
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": { "show_savings": true, "installments": 12, "pix_discount": 0 } },
+        "countdown": { "type": "countdown", "settings": { "text": "A oferta termina em:" } },
+        "stock": { "type": "stock", "settings": { "threshold": 10 } },
+        "variants": { "type": "variant_picker", "settings": { "swatches": true } },
+        "offers": { "type": "quantity_breaks", "settings": {} },
+        "buy": { "type": "buy_buttons", "settings": { "button_text": "COMPRAR AGORA", "pulse": true } },
+        "delivery": { "type": "delivery", "settings": { "min_days": 7, "max_days": 15 } },
+        "trust": { "type": "trust_badges", "settings": {} },
+        "payments": { "type": "payment_image", "settings": {} },
+        "benefits": { "type": "benefits", "settings": {} },
+        "tab-desc": { "type": "collapsible_tab", "settings": { "heading": "Descrição", "icon": "box", "show_description": true, "open": true } },
+        "tab-ship": { "type": "collapsible_tab", "settings": { "heading": "Envio e entrega", "icon": "truck", "content": "<p>Todos os pedidos são enviados com código de rastreio. O prazo médio de entrega é de 7 a 15 dias úteis.</p>" } },
+        "tab-return": { "type": "collapsible_tab", "settings": { "heading": "Troca e garantia", "icon": "return", "content": "<p>Você tem 7 dias após o recebimento para solicitar a troca ou devolução, sem burocracia.</p>" } }
+      },
+      "block_order": ["rating", "title", "price", "countdown", "stock", "variants", "offers", "buy", "delivery", "trust", "payments", "benefits", "tab-desc", "tab-ship", "tab-return"],
+      "settings": { "sticky_atc": true }
+    },
+    "trust": {
+      "type": "trust-badges",
+      "blocks": {
+        "b1": { "type": "badge", "settings": { "icon": "truck", "title": "Frete grátis", "text": "Para todo o Brasil" } },
+        "b2": { "type": "badge", "settings": { "icon": "lock", "title": "Compra segura", "text": "Site protegido com SSL" } },
+        "b3": { "type": "badge", "settings": { "icon": "return", "title": "Troca fácil", "text": "7 dias para devolução" } },
+        "b4": { "type": "badge", "settings": { "icon": "chat", "title": "Suporte", "text": "Atendimento humanizado" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": { "alt_bg": true }
+    },
+    "image-text": { "type": "image-with-text", "settings": {} },
+    "image-text-2": { "type": "image-with-text", "settings": { "image_right": true, "alt_bg": true, "eyebrow": "COMO FUNCIONA", "heading": "Simples de usar, resultado de verdade" } },
+    "comparison": {
+      "type": "comparison",
+      "blocks": {
+        "r1": { "type": "row", "settings": { "feature": "Material premium" } },
+        "r2": { "type": "row", "settings": { "feature": "Garantia de satisfação" } },
+        "r3": { "type": "row", "settings": { "feature": "Envio com rastreio" } },
+        "r4": { "type": "row", "settings": { "feature": "Suporte humanizado" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4"],
+      "settings": { "alt_bg": false }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": { "type": "testimonial", "settings": {} },
+        "t2": { "type": "testimonial", "settings": {} },
+        "t3": { "type": "testimonial", "settings": {} }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": { "alt_bg": true }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "Qual o prazo de entrega?", "answer": "<p>O prazo varia de acordo com a sua região. Você recebe o código de rastreio por e-mail assim que o pedido for enviado.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "A compra é segura?", "answer": "<p>Sim. Nosso site usa criptografia SSL e os pagamentos são processados por plataformas certificadas.</p>" } },
+        "q3": { "type": "question", "settings": { "question": "Posso trocar ou devolver?", "answer": "<p>Sim. Você tem 7 dias após o recebimento para solicitar troca ou devolução, conforme o Código de Defesa do Consumidor.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"],
+      "settings": {}
+    },
+    "related": { "type": "featured-collection", "settings": { "heading": "Você também pode gostar", "subheading": "", "collection": "all", "limit": 4 } }
+  },
+  "order": ["main", "trust", "image-text", "image-text-2", "comparison", "testimonials", "faq", "related"]
+}

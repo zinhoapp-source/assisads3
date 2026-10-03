@@ -1,0 +1,73 @@
+{
+  "general": {
+    "skip_to_content": "Pular para o conteúdo",
+    "page": "Página {{ page }}",
+    "search": "Buscar",
+    "search_placeholder": "O que você procura?",
+    "menu": "Menu",
+    "close": "Fechar",
+    "account": "Minha conta",
+    "view_all": "Ver tudo",
+    "previous": "Anterior",
+    "next": "Próxima",
+    "back_home": "Voltar para a loja",
+    "read_more": "Ler mais"
+  },
+  "products": {
+    "add_to_cart": "Adicionar ao carrinho",
+    "adding": "Adicionando...",
+    "buy_now": "Comprar agora",
+    "sold_out": "Esgotado",
+    "unavailable": "Indisponível",
+    "sale": "Oferta",
+    "save": "-{{ percent }}%",
+    "you_save_html": "Você economiza {{ amount }}",
+    "quantity": "Quantidade",
+    "from": "A partir de",
+    "reviews": "{{ count }} avaliações",
+    "stock_low": "Restam apenas {{ count }} unidades em estoque!",
+    "stock_ok": "Em estoque, pronto para envio",
+    "delivery_html": "Receba entre <strong data-delivery-from></strong> e <strong data-delivery-to></strong>",
+    "choose_option": "Escolha uma opção",
+    "quick_add": "Adicionar"
+  },
+  "cart": {
+    "title": "Seu carrinho",
+    "empty": "Seu carrinho está vazio",
+    "continue": "Continuar comprando",
+    "subtotal": "Subtotal",
+    "checkout": "Finalizar compra",
+    "remove": "Remover",
+    "taxes": "Frete e descontos calculados no checkout.",
+    "free_shipping_remaining_html": "Faltam <strong>{{ amount }}</strong> para você ganhar <strong>FRETE GRÁTIS</strong>",
+    "free_shipping_unlocked_html": "Parabéns! Você ganhou <strong>FRETE GRÁTIS</strong> 🎉",
+    "note": "Observações do pedido",
+    "discounts": "Descontos"
+  },
+  "collections": {
+    "empty": "Nenhum produto encontrado nesta coleção.",
+    "sort_by": "Ordenar por",
+    "filter": "Filtrar",
+    "products_count": "{{ count }} produtos",
+    "clear": "Limpar filtros",
+    "apply": "Aplicar"
+  },
+  "search": {
+    "title": "Buscar",
+    "results": "{{ count }} resultados para \"{{ terms }}\"",
+    "no_results": "Nenhum resultado para \"{{ terms }}\". Tente outra palavra."
+  },
+  "blogs": {
+    "by": "por {{ author }}",
+    "back": "Voltar ao blog"
+  },
+  "not_found": {
+    "title": "Página não encontrada",
+    "text": "A página que você procura não existe ou foi removida."
+  },
+  "newsletter": {
+    "email": "Seu melhor e-mail",
+    "subscribe": "Quero receber",
+    "success": "Obrigado! Você foi cadastrado com sucesso."
+  }
+}

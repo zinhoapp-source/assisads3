@@ -1,0 +1,40 @@
+{%- comment -%} Lista de itens do carrinho (usada na gaveta e na página). {%- endcomment -%}
+<ul class="cart-items">
+  {%- for item in cart.items -%}
+    <li class="cart-item" data-line="{{ forloop.index }}">
+      <a href="{{ item.url }}" class="cart-item__media">
+        {%- if item.image -%}
+          {{ item.image | image_url: width: 200 | image_tag: loading: 'lazy', alt: item.title | escape }}
+        {%- endif -%}
+      </a>
+      <div class="cart-item__info">
+        <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title }}</a>
+        {%- unless item.product.has_only_default_variant -%}
+          <p class="cart-item__variant">{{ item.variant.title }}</p>
+        {%- endunless -%}
+        {%- for property in item.properties -%}
+          {%- unless property.last == blank or property.first contains '_' -%}
+            <p class="cart-item__variant">{{ property.first }}: {{ property.last }}</p>
+          {%- endunless -%}
+        {%- endfor -%}
+        {%- for discount in item.line_level_discount_allocations -%}
+          <p class="cart-item__discount">{% render 'icon', name: 'gift' %} {{ discount.discount_application.title }} (-{{ discount.amount | money }})</p>
+        {%- endfor -%}
+        <div class="cart-item__bottom">
+          <div class="qty qty--small">
+            <button type="button" data-line-change="{{ forloop.index }}" data-qty="{{ item.quantity | minus: 1 }}" aria-label="-">{% render 'icon', name: 'minus' %}</button>
+            <span>{{ item.quantity }}</span>
+            <button type="button" data-line-change="{{ forloop.index }}" data-qty="{{ item.quantity | plus: 1 }}" aria-label="+">{% render 'icon', name: 'plus' %}</button>
+          </div>
+          <div class="cart-item__price">
+            {%- if item.original_line_price > item.final_line_price -%}
+              <s>{{ item.original_line_price | money }}</s>
+            {%- endif -%}
+            <strong>{{ item.final_line_price | money }}</strong>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="cart-item__remove" data-line-change="{{ forloop.index }}" data-qty="0" aria-label="{{ 'cart.remove' | t }}">{% render 'icon', name: 'close' %}</button>
+    </li>
+  {%- endfor -%}
+</ul>

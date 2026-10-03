@@ -1,0 +1,85 @@
+{%- paginate collection.products by section.settings.per_page -%}
+<section class="section page-width main-collection">
+  <div class="collection-header">
+    <h1 class="section__title">{{ collection.title }}</h1>
+    {%- if section.settings.show_description and collection.description != blank -%}
+      <div class="rte collection-header__desc">{{ collection.description }}</div>
+    {%- endif -%}
+  </div>
+
+  <form class="facets" data-facets action="{{ collection.url }}" method="get">
+    <div class="facets__bar">
+      {%- if section.settings.enable_filters and collection.filters.size > 0 -%}
+        <details class="facets__filters">
+          <summary class="btn btn--outline btn--small">{{ 'collections.filter' | t }} {% render 'icon', name: 'chevron' %}</summary>
+          <div class="facets__panel">
+            {%- for filter in collection.filters -%}
+              <fieldset class="facets__group">
+                <legend>{{ filter.label }}</legend>
+                {%- case filter.type -%}
+                  {%- when 'list', 'boolean' -%}
+                    {%- for value in filter.values -%}
+                      <label class="facets__check{% if value.count == 0 and value.active == false %} is-disabled{% endif %}">
+                        <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %}>
+                        {{ value.label }} <small>({{ value.count }})</small>
+                      </label>
+                    {%- endfor -%}
+                  {%- when 'price_range' -%}
+                    <div class="facets__price">
+                      <input type="number" name="{{ filter.min_value.param_name }}" placeholder="0" {% if filter.min_value.value %}value="{{ filter.min_value.value | divided_by: 100.0 }}"{% endif %} min="0" step="0.01" aria-label="Min">
+                      <span>até</span>
+                      <input type="number" name="{{ filter.max_value.param_name }}" placeholder="{{ filter.range_max | divided_by: 100.0 | ceil }}" {% if filter.max_value.value %}value="{{ filter.max_value.value | divided_by: 100.0 }}"{% endif %} min="0" step="0.01" aria-label="Max">
+                    </div>
+                {%- endcase -%}
+              </fieldset>
+            {%- endfor -%}
+            <div class="facets__actions">
+              <a href="{{ collection.url }}?sort_by={{ collection.sort_by }}" class="btn btn--outline btn--small">{{ 'collections.clear' | t }}</a>
+              <button type="submit" class="btn btn--small">{{ 'collections.apply' | t }}</button>
+            </div>
+          </div>
+        </details>
+      {%- endif -%}
+
+      <p class="facets__count">{{ 'collections.products_count' | t: count: collection.products_count }}</p>
+
+      {%- if section.settings.enable_sorting -%}
+        <label class="facets__sort">
+          <span class="visually-hidden">{{ 'collections.sort_by' | t }}</span>
+          {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+          <select name="sort_by" data-auto-submit>
+            {%- for option in collection.sort_options -%}
+              <option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected{% endif %}>{{ option.name | escape }}</option>
+            {%- endfor -%}
+          </select>
+        </label>
+      {%- endif -%}
+    </div>
+  </form>
+
+  {%- if collection.products.size > 0 -%}
+    <div class="product-grid product-grid--{{ section.settings.columns }}">
+      {%- for product in collection.products -%}
+        {% render 'product-card', product: product %}
+      {%- endfor -%}
+    </div>
+    {% render 'pagination', paginate: paginate %}
+  {%- else -%}
+    <p class="empty-state">{{ 'collections.empty' | t }}</p>
+  {%- endif -%}
+</section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Coleção",
+  "class": "section-main-collection",
+  "settings": [
+    { "type": "range", "id": "per_page", "label": "Produtos por página", "min": 8, "max": 48, "step": 4, "default": 24 },
+    { "type": "range", "id": "columns", "label": "Colunas no computador", "min": 2, "max": 5, "step": 1, "default": 4 },
+    { "type": "checkbox", "id": "show_description", "label": "Mostrar descrição da coleção", "default": true },
+    { "type": "checkbox", "id": "enable_filters", "label": "Ativar filtros", "default": true, "info": "Configure os filtros no app Search & Discovery da Shopify." },
+    { "type": "checkbox", "id": "enable_sorting", "label": "Ativar ordenação", "default": true }
+  ]
+}
+{% endschema %}

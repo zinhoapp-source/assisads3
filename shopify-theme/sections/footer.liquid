@@ -1,0 +1,98 @@
+<footer class="footer">
+  <div class="page-width">
+    <div class="footer__grid">
+      {%- for block in section.blocks -%}
+        <div class="footer__block footer__block--{{ block.type }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.title != blank -%}
+            <h3 class="footer__title">{{ block.settings.title }}</h3>
+          {%- endif -%}
+          {%- case block.type -%}
+            {%- when 'text' -%}
+              <div class="rte">{{ block.settings.text }}</div>
+            {%- when 'menu' -%}
+              <ul class="footer__links">
+                {%- for link in block.settings.menu.links -%}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- when 'newsletter' -%}
+              {%- if block.settings.text != blank -%}<div class="rte">{{ block.settings.text }}</div>{%- endif -%}
+              {%- form 'customer', id: 'footer-newsletter', class: 'newsletter-form' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                {%- if form.posted_successfully? -%}
+                  <p class="form-success">{{ 'newsletter.success' | t }}</p>
+                {%- else -%}
+                  <div class="newsletter-form__row">
+                    <input type="email" name="contact[email]" required placeholder="{{ 'newsletter.email' | t }}" aria-label="{{ 'newsletter.email' | t }}" autocomplete="email">
+                    <button type="submit" class="btn">{{ 'newsletter.subscribe' | t }}</button>
+                  </div>
+                  {%- if form.errors -%}<p class="form-error">{{ form.errors | default_errors }}</p>{%- endif -%}
+                {%- endif -%}
+              {%- endform -%}
+          {%- endcase -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__social">
+        {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{% render 'icon', name: 'instagram' %}</a>{%- endif -%}
+        {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{% render 'icon', name: 'facebook' %}</a>{%- endif -%}
+        {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">{% render 'icon', name: 'tiktok' %}</a>{%- endif -%}
+        {%- if settings.social_youtube != blank -%}<a href="{{ settings.social_youtube }}" target="_blank" rel="noopener" aria-label="YouTube">{% render 'icon', name: 'youtube' %}</a>{%- endif -%}
+      </div>
+
+      {%- if section.settings.show_payment_icons -%}
+        <ul class="footer__payments" aria-label="Formas de pagamento">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>{{ type | payment_type_svg_tag: class: 'payment-icon' }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      <p class="footer__copy">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}
+        {%- if section.settings.legal_text != blank %} · {{ section.settings.legal_text }}{% endif %}
+      </p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Rodapé",
+  "class": "section-footer",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Mostrar ícones de pagamento", "default": true },
+    { "type": "text", "id": "legal_text", "label": "Texto legal (CNPJ, razão social)", "default": "CNPJ 00.000.000/0001-00" }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Texto",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "Sobre nós" },
+        { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Conte um pouco sobre sua loja.</p>" }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "Links" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "Receba ofertas exclusivas" },
+        { "type": "richtext", "id": "text", "label": "Texto" }
+      ]
+    }
+  ]
+}
+{% endschema %}
