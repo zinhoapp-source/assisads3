@@ -4,6 +4,16 @@ Tema original para Shopify (Online Store 2.0), feito do zero e pensado para conv
 carregamento rápido, layout pensado primeiro para o celular e todas as seções editáveis
 pelo editor visual da Shopify, sem mexer em código.
 
+## Idioma e país
+
+O tema vem configurado para o **Reino Unido**: textos da loja em **inglês britânico**, moeda da
+loja (£), devolução de 14 dias (Consumer Contracts Regulations) e pagamentos com cartão, Apple Pay
+e PayPal. O **editor do tema continua em português** para facilitar a sua edição.
+
+- O idioma padrão é `locales/en.default.json`. O português (`pt-BR.json`) fica disponível como 2º idioma.
+- Para vender em outros idiomas, use **Configurações → Idiomas** e o app gratuito
+  **Translate & Adapt** da Shopify, que traduz automaticamente o conteúdo das seções e dos produtos.
+
 ## Como instalar
 
 1. Baixe o arquivo **`vertex-theme.zip`**.
@@ -49,6 +59,10 @@ pelo editor visual da Shopify, sem mexer em código.
 - Perguntas frequentes (com dados estruturados para o Google)
 - Banner de contagem regressiva (Black Friday, etc.)
 - Newsletter
+- **Vídeo/demonstração** (vídeo da Shopify, YouTube ou Vimeo, com loop estilo GIF)
+- **Como funciona** (passo a passo com imagem, GIF ou vídeo)
+- **Resultados em números** (ex.: "95% recomendariam")
+- **Apps** (coloque a galeria de avaliações com foto do Judge.me/Loox em qualquer lugar)
 - Filtros e ordenação nas coleções
 - Botão flutuante de WhatsApp
 - Animações suaves ao rolar
@@ -60,6 +74,7 @@ pelo editor visual da Shopify, sem mexer em código.
 | Cores, fontes e arredondamento | Personalizar → Configurações do tema |
 | Valor do frete grátis da barra | Configurações do tema → Carrinho (use o mesmo valor de *Configurações → Frete*) |
 | Produto sugerido no carrinho | Configurações do tema → Carrinho |
+| Parcelamento (Klarna/Clearpay/PayPal Pay in 3) | Página de produto → bloco "Preço" (só ative se oferecer) |
 | Número do WhatsApp | Configurações do tema → Redes sociais e contato |
 | Descontos das ofertas por quantidade | **Descontos → Criar desconto automático** (ex.: "Compre 2, ganhe 10%") |
 | Contador da oferta | Página de produto → bloco "Contador da oferta" → data de término (ex.: `2026-12-31T23:59`) |
@@ -69,10 +84,10 @@ pelo editor visual da Shopify, sem mexer em código.
 
 ## Boas práticas (e legais)
 
-- Use somente **depoimentos e avaliações reais**. Avaliações falsas violam o Código de Defesa do
-  Consumidor e as políticas da Shopify, e podem fazer a loja ser suspensa.
+- Use somente **depoimentos, avaliações e números reais**. No Reino Unido, avaliações falsas são
+  proibidas por lei (DMCC Act 2024) e violam as políticas da Shopify, podendo suspender a loja.
 - Coloque no contador apenas **promoções reais**, com data de término verdadeira.
-- Mantenha visíveis as políticas de troca (7 dias pelo CDC), privacidade e o CNPJ no rodapé.
+- Mantenha visíveis as políticas de devolução (14 dias), privacidade, termos e os dados da empresa no rodapé.
 
 ## Estrutura
 

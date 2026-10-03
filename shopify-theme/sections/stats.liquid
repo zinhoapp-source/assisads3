@@ -1,0 +1,52 @@
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+  <div class="page-width page-width--narrow">
+    <div class="section__header" data-animate>
+      {%- if section.settings.heading != blank -%}<h2 class="section__title">{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+    <div class="stats">
+      {%- for block in section.blocks -%}
+        <div class="stat" data-animate {{ block.shopify_attributes }}>
+          <span class="stat__value">{{ block.settings.value }}</span>
+          <span class="stat__label">{{ block.settings.label }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.footnote != blank -%}
+      <p class="stats__footnote">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Resultados em números",
+  "class": "section-stats",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "paragraph", "content": "Use apenas números verdadeiros e comprováveis (ex.: de uma pesquisa com seus clientes). Números inventados são proibidos pela lei de proteção ao consumidor do Reino Unido." },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Real results" },
+    { "type": "text", "id": "footnote", "label": "Nota de rodapé (fonte dos dados)", "default": "Based on a survey of our customers." },
+    { "type": "checkbox", "id": "alt_bg", "label": "Fundo alternativo", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Número",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Número", "default": "95%" },
+        { "type": "text", "id": "label", "label": "Descrição", "default": "would recommend us to a friend" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Resultados em números",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "95%", "label": "would recommend us to a friend" } },
+        { "type": "stat", "settings": { "value": "90%", "label": "noticed a difference in the first week" } },
+        { "type": "stat", "settings": { "value": "4.8/5", "label": "average customer rating" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

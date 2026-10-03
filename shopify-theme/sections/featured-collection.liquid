@@ -15,7 +15,7 @@
         {%- for i in (1..4) -%}
           <div class="card">
             <div class="card__media">{{ 'product-' | append: i | placeholder_svg_tag: 'card__img placeholder' }}</div>
-            <div class="card__info"><p class="card__title">Nome do produto</p><div class="price price--sale"><span class="price__current">R$ 99,90</span> <s class="price__compare">R$ 199,90</s></div></div>
+            <div class="card__info"><p class="card__title">{{ 'products.sample_title' | t }}</p><div class="price price--sale"><span class="price__current">{{ 2999 | money }}</span> <s class="price__compare">{{ 4999 | money }}</s></div></div>
           </div>
         {%- endfor -%}
       {%- endif -%}
@@ -34,8 +34,8 @@
   "name": "Coleção em destaque",
   "class": "section-featured-collection",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Título", "default": "Mais vendidos" },
-    { "type": "text", "id": "subheading", "label": "Subtítulo", "default": "Os favoritos dos nossos clientes" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Best sellers" },
+    { "type": "text", "id": "subheading", "label": "Subtítulo", "default": "Our customers' favourites" },
     { "type": "collection", "id": "collection", "label": "Coleção" },
     { "type": "range", "id": "limit", "label": "Quantidade de produtos", "min": 2, "max": 16, "step": 1, "default": 8 },
     { "type": "range", "id": "columns", "label": "Colunas no computador", "min": 2, "max": 5, "step": 1, "default": 4 },

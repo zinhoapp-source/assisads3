@@ -22,9 +22,9 @@
       "card_quick_add": true,
       "cart_type": "drawer",
       "free_shipping_enabled": true,
-      "free_shipping_threshold": 199,
-      "cart_upsell_title": "Aproveite e leve também",
-      "cart_trust_text": "Compra 100% segura · Pix, cartão e boleto"
+      "free_shipping_threshold": 50,
+      "cart_upsell_title": "Complete your order",
+      "cart_trust_text": "Secure checkout · Cards, Apple Pay & PayPal"
     }
   }
 }

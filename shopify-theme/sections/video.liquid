@@ -1,0 +1,46 @@
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+  <div class="page-width{% if section.settings.narrow %} page-width--narrow{% endif %}">
+    {%- if section.settings.heading != blank or section.settings.text != blank -%}
+      <div class="section__header" data-animate>
+        {%- if section.settings.heading != blank -%}<h2 class="section__title">{{ section.settings.heading }}</h2>{%- endif -%}
+        {%- if section.settings.text != blank -%}<div class="section__subtitle rte">{{ section.settings.text }}</div>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="video-block" data-animate>
+      {%- if section.settings.video != blank -%}
+        {%- if section.settings.autoplay -%}
+          {{ section.settings.video | video_tag: autoplay: true, muted: true, loop: true, playsinline: true, controls: false, preload: 'metadata', image_size: '1600x' }}
+        {%- else -%}
+          {{ section.settings.video | video_tag: controls: true, playsinline: true, preload: 'metadata', image_size: '1600x' }}
+        {%- endif -%}
+      {%- elsif section.settings.video_url != blank -%}
+        {%- if section.settings.video_url.type == 'youtube' -%}
+          <iframe src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?rel=0&playsinline=1{% if section.settings.autoplay %}&autoplay=1&mute=1&loop=1&playlist={{ section.settings.video_url.id }}{% endif %}" title="{{ section.settings.heading | escape }}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        {%- else -%}
+          <iframe src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}{% if section.settings.autoplay %}?autoplay=1&muted=1&loop=1&background=1{% endif %}" title="{{ section.settings.heading | escape }}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        {%- endif -%}
+      {%- else -%}
+        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder' }}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Vídeo / demonstração",
+  "class": "section-video",
+  "settings": [
+    { "type": "paragraph", "content": "Ideal para mostrar o produto funcionando. Vídeos curtos (5–15s) em loop convertem muito bem." },
+    { "type": "video", "id": "video", "label": "Vídeo enviado para a Shopify" },
+    { "type": "video_url", "id": "video_url", "label": "Ou link do YouTube/Vimeo", "accept": ["youtube", "vimeo"] },
+    { "type": "checkbox", "id": "autoplay", "label": "Reproduzir automaticamente sem som, em loop (estilo GIF)", "default": true },
+    { "type": "text", "id": "heading", "label": "Título", "default": "See it in action" },
+    { "type": "richtext", "id": "text", "label": "Texto" },
+    { "type": "checkbox", "id": "narrow", "label": "Largura reduzida", "default": true },
+    { "type": "checkbox", "id": "alt_bg", "label": "Fundo alternativo", "default": false }
+  ],
+  "presets": [{ "name": "Vídeo / demonstração" }]
+}
+{% endschema %}

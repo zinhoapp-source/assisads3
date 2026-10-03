@@ -76,14 +76,15 @@
             <div class="product__price" {{ block.shopify_attributes }}>
               {% render 'price', product: product, variant: current_variant, size: 'large', show_savings: block.settings.show_savings %}
               {%- if block.settings.installments > 1 -%}
+                {%- liquid
+                  assign inst_amount = current_variant.price | divided_by: block.settings.installments | money
+                  assign inst_provider = ''
+                  if block.settings.installments_provider != blank
+                    assign inst_provider = ' ' | append: block.settings.installments_provider
+                  endif
+                -%}
                 <p class="product__installments" data-installments="{{ block.settings.installments }}">
-                  ou <strong>{{ block.settings.installments }}x</strong> de <strong data-installment-value>{{ current_variant.price | divided_by: block.settings.installments | money }}</strong> sem juros
-                </p>
-              {%- endif -%}
-              {%- if block.settings.pix_discount > 0 -%}
-                <p class="product__pix" data-pix-discount="{{ block.settings.pix_discount }}">
-                  {%- assign pix_mult = 100 | minus: block.settings.pix_discount -%}
-                  <strong data-pix-value>{{ current_variant.price | times: pix_mult | divided_by: 100 | money }}</strong> no Pix ({{ block.settings.pix_discount }}% off)
+                  {{ 'products.installments_html' | t: count: block.settings.installments, amount: inst_amount, provider: inst_provider }}
                 </p>
               {%- endif -%}
             </div>
@@ -172,7 +173,7 @@
                     <span class="offer__radio"></span>
                     <span class="offer__text">
                       <strong>{{ block.settings[l_key] }}</strong>
-                      {%- if d > 0 -%}<small>Economize {{ d }}%</small>{%- endif -%}
+                      {%- if d > 0 -%}<small>{{ 'products.offer_save' | t: percent: d }}</small>{%- endif -%}
                     </span>
                     {%- if block.settings[b_key] != blank -%}<span class="offer__badge">{{ block.settings[b_key] }}</span>{%- endif -%}
                     <span class="offer__prices">
@@ -338,8 +339,8 @@
       "limit": 1,
       "settings": [
         { "type": "checkbox", "id": "show_savings", "label": "Mostrar \"Você economiza R$ X\"", "default": true },
-        { "type": "range", "id": "installments", "label": "Parcelas sem juros (1 = ocultar)", "min": 1, "max": 12, "step": 1, "default": 12 },
-        { "type": "range", "id": "pix_discount", "label": "Desconto no Pix (%) (0 = ocultar)", "min": 0, "max": 20, "step": 1, "default": 0, "info": "Configure o mesmo desconto no seu meio de pagamento." }
+        { "type": "range", "id": "installments", "label": "Parcelas sem juros (1 = ocultar)", "min": 1, "max": 12, "step": 1, "default": 1, "info": "Ative só se a loja oferecer pagamento parcelado (ex.: Klarna, Clearpay ou PayPal Pay in 3)." },
+        { "type": "text", "id": "installments_provider", "label": "Texto após as parcelas", "default": "with Klarna", "info": "Ex.: with Klarna, with Clearpay, with PayPal" }
       ]
     },
     {
@@ -347,7 +348,7 @@
       "name": "Contador da oferta",
       "limit": 1,
       "settings": [
-        { "type": "text", "id": "text", "label": "Texto", "default": "A oferta termina em:" },
+        { "type": "text", "id": "text", "label": "Texto", "default": "Sale ends in:" },
         { "type": "text", "id": "end_date", "label": "Data de término da promoção", "info": "Formato: 2026-12-31T23:59. O contador some sozinho quando a promoção acabar." }
       ]
     },
@@ -373,24 +374,24 @@
       "limit": 1,
       "settings": [
         { "type": "paragraph", "content": "Importante: crie os descontos correspondentes em Descontos > Desconto automático (ex.: \"Compre 2, ganhe 10%\"). Este bloco só seleciona a quantidade e mostra a economia." },
-        { "type": "text", "id": "title", "label": "Título", "default": "COMPRE MAIS E ECONOMIZE" },
+        { "type": "text", "id": "title", "label": "Título", "default": "BUY MORE, SAVE MORE" },
         { "type": "range", "id": "default_offer", "label": "Oferta selecionada por padrão", "min": 1, "max": 3, "step": 1, "default": 2 },
         { "type": "header", "content": "Oferta 1" },
         { "type": "number", "id": "qty_1", "label": "Quantidade", "default": 1 },
-        { "type": "text", "id": "label_1", "label": "Nome", "default": "1 unidade" },
+        { "type": "text", "id": "label_1", "label": "Nome", "default": "Buy 1" },
         { "type": "number", "id": "discount_1", "label": "Desconto (%)", "default": 0 },
         { "type": "text", "id": "badge_1", "label": "Selo" },
         { "type": "header", "content": "Oferta 2" },
         { "type": "number", "id": "qty_2", "label": "Quantidade", "default": 2 },
-        { "type": "text", "id": "label_2", "label": "Nome", "default": "2 unidades" },
+        { "type": "text", "id": "label_2", "label": "Nome", "default": "Buy 2" },
         { "type": "number", "id": "discount_2", "label": "Desconto (%)", "default": 10 },
-        { "type": "text", "id": "badge_2", "label": "Selo", "default": "MAIS VENDIDO" },
+        { "type": "text", "id": "badge_2", "label": "Selo", "default": "MOST POPULAR" },
         { "type": "header", "content": "Oferta 3 (0 na quantidade = ocultar)" },
         { "type": "number", "id": "qty_3", "label": "Quantidade", "default": 3 },
-        { "type": "text", "id": "label_3", "label": "Nome", "default": "3 unidades" },
+        { "type": "text", "id": "label_3", "label": "Nome", "default": "Buy 3" },
         { "type": "number", "id": "discount_3", "label": "Desconto (%)", "default": 15 },
-        { "type": "text", "id": "badge_3", "label": "Selo", "default": "MELHOR PREÇO" },
-        { "type": "text", "id": "note", "label": "Observação", "default": "Desconto aplicado automaticamente no checkout." }
+        { "type": "text", "id": "badge_3", "label": "Selo", "default": "BEST VALUE" },
+        { "type": "text", "id": "note", "label": "Observação", "default": "Discount applied automatically at checkout." }
       ]
     },
     {
@@ -398,7 +399,7 @@
       "name": "Botões de compra",
       "limit": 1,
       "settings": [
-        { "type": "text", "id": "button_text", "label": "Texto do botão", "default": "COMPRAR AGORA" },
+        { "type": "text", "id": "button_text", "label": "Texto do botão", "default": "ADD TO CART" },
         { "type": "checkbox", "id": "show_quantity", "label": "Mostrar seletor de quantidade", "default": false },
         { "type": "checkbox", "id": "pulse", "label": "Animação de pulso no botão", "default": true },
         { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Botões de checkout dinâmico (Shop Pay, etc.)", "default": false }
@@ -418,10 +419,10 @@
       "name": "Selos de garantia",
       "limit": 1,
       "settings": [
-        { "type": "text", "id": "badge_1", "label": "Selo 1", "default": "Frete grátis" },
-        { "type": "text", "id": "badge_2", "label": "Selo 2", "default": "7 dias para troca" },
-        { "type": "text", "id": "badge_3", "label": "Selo 3", "default": "Compra segura" },
-        { "type": "text", "id": "badge_4", "label": "Selo 4", "default": "Suporte humanizado" }
+        { "type": "text", "id": "badge_1", "label": "Selo 1", "default": "Free UK delivery" },
+        { "type": "text", "id": "badge_2", "label": "Selo 2", "default": "14-day returns" },
+        { "type": "text", "id": "badge_3", "label": "Selo 3", "default": "Secure checkout" },
+        { "type": "text", "id": "badge_4", "label": "Selo 4", "default": "Friendly support" }
       ]
     },
     {
@@ -436,7 +437,7 @@
       "type": "benefits",
       "name": "Lista de benefícios",
       "settings": [
-        { "type": "textarea", "id": "items", "label": "Benefícios (um por linha)", "default": "Material premium e durável\nResultado visível desde o primeiro uso\nEnvio com código de rastreio" }
+        { "type": "textarea", "id": "items", "label": "Benefícios (um por linha)", "default": "Premium, long-lasting materials\nVisible results from the first use\nTracked delivery on every order" }
       ]
     },
     { "type": "description", "name": "Descrição", "limit": 1, "settings": [] },
@@ -444,7 +445,7 @@
       "type": "collapsible_tab",
       "name": "Aba recolhível",
       "settings": [
-        { "type": "text", "id": "heading", "label": "Título", "default": "Envio e entrega" },
+        { "type": "text", "id": "heading", "label": "Título", "default": "Delivery" },
         {
           "type": "select",
           "id": "icon",
@@ -470,7 +471,7 @@
       "type": "text",
       "name": "Texto",
       "settings": [
-        { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Escreva algo sobre o produto.</p>" }
+        { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Tell customers more about this product.</p>" }
       ]
     },
     {

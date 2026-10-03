@@ -3,70 +3,378 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "rating": { "type": "rating", "settings": {} },
-        "title": { "type": "title", "settings": {} },
-        "price": { "type": "price", "settings": { "show_savings": true, "installments": 12, "pix_discount": 0 } },
-        "countdown": { "type": "countdown", "settings": { "text": "A oferta termina em:" } },
-        "stock": { "type": "stock", "settings": { "threshold": 10 } },
-        "variants": { "type": "variant_picker", "settings": { "swatches": true } },
-        "offers": { "type": "quantity_breaks", "settings": {} },
-        "buy": { "type": "buy_buttons", "settings": { "button_text": "COMPRAR AGORA", "pulse": true } },
-        "delivery": { "type": "delivery", "settings": { "min_days": 7, "max_days": 15 } },
-        "trust": { "type": "trust_badges", "settings": {} },
-        "payments": { "type": "payment_image", "settings": {} },
-        "benefits": { "type": "benefits", "settings": {} },
-        "tab-desc": { "type": "collapsible_tab", "settings": { "heading": "Descrição", "icon": "box", "show_description": true, "open": true } },
-        "tab-ship": { "type": "collapsible_tab", "settings": { "heading": "Envio e entrega", "icon": "truck", "content": "<p>Todos os pedidos são enviados com código de rastreio. O prazo médio de entrega é de 7 a 15 dias úteis.</p>" } },
-        "tab-return": { "type": "collapsible_tab", "settings": { "heading": "Troca e garantia", "icon": "return", "content": "<p>Você tem 7 dias após o recebimento para solicitar a troca ou devolução, sem burocracia.</p>" } }
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_savings": true,
+            "installments": 1
+          }
+        },
+        "countdown": {
+          "type": "countdown",
+          "settings": {
+            "text": "Sale ends in:"
+          }
+        },
+        "stock": {
+          "type": "stock",
+          "settings": {
+            "threshold": 10
+          }
+        },
+        "variants": {
+          "type": "variant_picker",
+          "settings": {
+            "swatches": true
+          }
+        },
+        "offers": {
+          "type": "quantity_breaks",
+          "settings": {}
+        },
+        "buy": {
+          "type": "buy_buttons",
+          "settings": {
+            "button_text": "ADD TO CART",
+            "pulse": true
+          }
+        },
+        "delivery": {
+          "type": "delivery",
+          "settings": {
+            "min_days": 3,
+            "max_days": 7
+          }
+        },
+        "trust": {
+          "type": "trust_badges",
+          "settings": {}
+        },
+        "payments": {
+          "type": "payment_image",
+          "settings": {}
+        },
+        "benefits": {
+          "type": "benefits",
+          "settings": {}
+        },
+        "tab-desc": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Description",
+            "icon": "box",
+            "show_description": true,
+            "open": true
+          }
+        },
+        "tab-ship": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Delivery",
+            "icon": "truck",
+            "content": "<p>All orders are sent with tracking. Orders are dispatched within 1–2 working days.</p>"
+          }
+        },
+        "tab-return": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Returns & guarantee",
+            "icon": "return",
+            "content": "<p>Not happy? Return it within 14 days of delivery for a full refund — no questions asked.</p>"
+          }
+        }
       },
-      "block_order": ["rating", "title", "price", "countdown", "stock", "variants", "offers", "buy", "delivery", "trust", "payments", "benefits", "tab-desc", "tab-ship", "tab-return"],
-      "settings": { "sticky_atc": true }
+      "block_order": [
+        "rating",
+        "title",
+        "price",
+        "countdown",
+        "stock",
+        "variants",
+        "offers",
+        "buy",
+        "delivery",
+        "trust",
+        "payments",
+        "benefits",
+        "tab-desc",
+        "tab-ship",
+        "tab-return"
+      ],
+      "settings": {
+        "sticky_atc": true
+      }
     },
     "trust": {
       "type": "trust-badges",
       "blocks": {
-        "b1": { "type": "badge", "settings": { "icon": "truck", "title": "Frete grátis", "text": "Para todo o Brasil" } },
-        "b2": { "type": "badge", "settings": { "icon": "lock", "title": "Compra segura", "text": "Site protegido com SSL" } },
-        "b3": { "type": "badge", "settings": { "icon": "return", "title": "Troca fácil", "text": "7 dias para devolução" } },
-        "b4": { "type": "badge", "settings": { "icon": "chat", "title": "Suporte", "text": "Atendimento humanizado" } }
+        "b1": {
+          "type": "badge",
+          "settings": {
+            "icon": "truck",
+            "title": "Free UK delivery",
+            "text": "On orders over £50"
+          }
+        },
+        "b2": {
+          "type": "badge",
+          "settings": {
+            "icon": "lock",
+            "title": "Secure checkout",
+            "text": "SSL encrypted payments"
+          }
+        },
+        "b3": {
+          "type": "badge",
+          "settings": {
+            "icon": "return",
+            "title": "Easy returns",
+            "text": "14-day money-back guarantee"
+          }
+        },
+        "b4": {
+          "type": "badge",
+          "settings": {
+            "icon": "chat",
+            "title": "Real support",
+            "text": "Friendly UK-based team"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
-      "settings": { "alt_bg": true }
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "alt_bg": true
+      }
     },
-    "image-text": { "type": "image-with-text", "settings": {} },
-    "image-text-2": { "type": "image-with-text", "settings": { "image_right": true, "alt_bg": true, "eyebrow": "COMO FUNCIONA", "heading": "Simples de usar, resultado de verdade" } },
+    "video": {
+      "type": "video",
+      "settings": {
+        "heading": "See it in action"
+      }
+    },
+    "image-text": {
+      "type": "image-with-text",
+      "settings": {}
+    },
+    "steps": {
+      "type": "how-it-works",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Unbox it",
+            "text": "<p>Everything you need arrives in one box, ready to go.</p>"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Use it",
+            "text": "<p>Takes less than a minute a day — no experience needed.</p>"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Love the results",
+            "text": "<p>Feel the difference from the very first use.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {}
+    },
+    "image-text-2": {
+      "type": "image-with-text",
+      "settings": {
+        "image_right": true,
+        "alt_bg": true,
+        "eyebrow": "THE DIFFERENCE",
+        "heading": "Simple to use, real results"
+      }
+    },
+    "stats": {
+      "type": "stats",
+      "blocks": {
+        "n1": {
+          "type": "stat",
+          "settings": {
+            "value": "95%",
+            "label": "would recommend us to a friend"
+          }
+        },
+        "n2": {
+          "type": "stat",
+          "settings": {
+            "value": "90%",
+            "label": "noticed a difference in the first week"
+          }
+        },
+        "n3": {
+          "type": "stat",
+          "settings": {
+            "value": "4.8/5",
+            "label": "average customer rating"
+          }
+        }
+      },
+      "block_order": [
+        "n1",
+        "n2",
+        "n3"
+      ],
+      "settings": {
+        "alt_bg": true
+      }
+    },
     "comparison": {
       "type": "comparison",
       "blocks": {
-        "r1": { "type": "row", "settings": { "feature": "Material premium" } },
-        "r2": { "type": "row", "settings": { "feature": "Garantia de satisfação" } },
-        "r3": { "type": "row", "settings": { "feature": "Envio com rastreio" } },
-        "r4": { "type": "row", "settings": { "feature": "Suporte humanizado" } }
+        "r1": {
+          "type": "row",
+          "settings": {
+            "feature": "Premium materials"
+          }
+        },
+        "r2": {
+          "type": "row",
+          "settings": {
+            "feature": "Money-back guarantee"
+          }
+        },
+        "r3": {
+          "type": "row",
+          "settings": {
+            "feature": "Tracked delivery"
+          }
+        },
+        "r4": {
+          "type": "row",
+          "settings": {
+            "feature": "Real human support"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4"],
-      "settings": { "alt_bg": false }
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "settings": {
+        "alt_bg": false
+      }
+    },
+    "reviews": {
+      "type": "apps",
+      "settings": {
+        "heading": ""
+      }
     },
     "testimonials": {
       "type": "testimonials",
       "blocks": {
-        "t1": { "type": "testimonial", "settings": {} },
-        "t2": { "type": "testimonial", "settings": {} },
-        "t3": { "type": "testimonial", "settings": {} }
+        "t1": {
+          "type": "testimonial",
+          "settings": {}
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {}
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {}
+        }
       },
-      "block_order": ["t1", "t2", "t3"],
-      "settings": { "alt_bg": true }
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "alt_bg": true
+      }
     },
     "faq": {
       "type": "faq",
       "blocks": {
-        "q1": { "type": "question", "settings": { "question": "Qual o prazo de entrega?", "answer": "<p>O prazo varia de acordo com a sua região. Você recebe o código de rastreio por e-mail assim que o pedido for enviado.</p>" } },
-        "q2": { "type": "question", "settings": { "question": "A compra é segura?", "answer": "<p>Sim. Nosso site usa criptografia SSL e os pagamentos são processados por plataformas certificadas.</p>" } },
-        "q3": { "type": "question", "settings": { "question": "Posso trocar ou devolver?", "answer": "<p>Sim. Você tem 7 dias após o recebimento para solicitar troca ou devolução, conforme o Código de Defesa do Consumidor.</p>" } }
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "How long does delivery take?",
+            "answer": "<p>Orders are dispatched within 1–2 working days. You'll receive a tracking link by email as soon as your order ships.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Is checkout secure?",
+            "answer": "<p>Yes. Our store is SSL encrypted and payments are processed by certified providers. We never see or store your card details.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return my order?",
+            "answer": "<p>Yes. You have 14 days from delivery to return your order for a full refund, in line with the UK Consumer Contracts Regulations.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Which payment methods do you accept?",
+            "answer": "<p>All major credit and debit cards, Apple Pay, Google Pay and PayPal.</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
       "settings": {}
     },
-    "related": { "type": "featured-collection", "settings": { "heading": "Você também pode gostar", "subheading": "", "collection": "all", "limit": 4 } }
+    "related": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "You may also like",
+        "subheading": "",
+        "collection": "all",
+        "limit": 4
+      }
+    }
   },
-  "order": ["main", "trust", "image-text", "image-text-2", "comparison", "testimonials", "faq", "related"]
+  "order": [
+    "main",
+    "trust",
+    "video",
+    "image-text",
+    "steps",
+    "image-text-2",
+    "stats",
+    "comparison",
+    "reviews",
+    "testimonials",
+    "faq",
+    "related"
+  ]
 }

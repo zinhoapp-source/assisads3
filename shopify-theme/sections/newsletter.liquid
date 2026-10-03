@@ -9,7 +9,7 @@
       {%- else -%}
         <div class="newsletter-form__row">
           <input type="email" name="contact[email]" required placeholder="{{ 'newsletter.email' | t }}" aria-label="{{ 'newsletter.email' | t }}" autocomplete="email">
-          <button type="submit" class="btn">{{ section.settings.button_label | default: 'Quero receber' }}</button>
+          <button type="submit" class="btn">{%- if section.settings.button_label != blank -%}{{ section.settings.button_label }}{%- else -%}{{ 'newsletter.subscribe' | t }}{%- endif -%}</button>
         </div>
         {%- if form.errors -%}<p class="form-error">{{ form.errors | default_errors }}</p>{%- endif -%}
       {%- endif -%}
@@ -22,9 +22,9 @@
   "name": "Newsletter",
   "class": "section-newsletter",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Título", "default": "Ganhe 10% OFF na primeira compra" },
-    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Cadastre seu e-mail e receba o cupom e ofertas exclusivas.</p>" },
-    { "type": "text", "id": "button_label", "label": "Texto do botão", "default": "QUERO MEU CUPOM" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Get 10% off your first order" },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Join our list for your welcome code and exclusive offers.</p>" },
+    { "type": "text", "id": "button_label", "label": "Texto do botão", "default": "GET MY CODE" },
     { "type": "color", "id": "bg", "label": "Fundo", "default": "#111111" },
     { "type": "color", "id": "color", "label": "Texto", "default": "#FFFFFF" }
   ],

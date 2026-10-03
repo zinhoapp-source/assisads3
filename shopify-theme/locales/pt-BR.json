@@ -29,7 +29,11 @@
     "stock_ok": "Em estoque, pronto para envio",
     "delivery_html": "Receba entre <strong data-delivery-from></strong> e <strong data-delivery-to></strong>",
     "choose_option": "Escolha uma opção",
-    "quick_add": "Adicionar"
+    "quick_add": "Adicionar",
+    "installments_html": "ou {{ count }}x de <strong data-installment-value>{{ amount }}</strong> sem juros{{ provider }}",
+    "offer_save": "Economize {{ percent }}%",
+    "verified": "Compra verificada",
+    "sample_title": "Nome do produto"
   },
   "cart": {
     "title": "Seu carrinho",
@@ -50,7 +54,9 @@
     "filter": "Filtrar",
     "products_count": "{{ count }} produtos",
     "clear": "Limpar filtros",
-    "apply": "Aplicar"
+    "apply": "Aplicar",
+    "price_to": "até",
+    "category": "Categoria"
   },
   "search": {
     "title": "Buscar",
@@ -69,5 +75,11 @@
     "email": "Seu melhor e-mail",
     "subscribe": "Quero receber",
     "success": "Obrigado! Você foi cadastrado com sucesso."
+  },
+  "countdown": {
+    "days": "dias",
+    "hours": "horas",
+    "minutes": "min",
+    "seconds": "seg"
   }
 }

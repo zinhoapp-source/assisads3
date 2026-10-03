@@ -5,17 +5,44 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "msg-1": { "type": "message", "settings": { "text": "🚚 FRETE GRÁTIS para todo o Brasil acima de R$ 199" } },
-        "msg-2": { "type": "message", "settings": { "text": "💳 Parcele em até 12x no cartão" } },
-        "msg-3": { "type": "message", "settings": { "text": "🔒 Compra 100% segura · 7 dias para troca" } }
+        "msg-1": {
+          "type": "message",
+          "settings": {
+            "text": "🚚 FREE UK DELIVERY on orders over £50"
+          }
+        },
+        "msg-2": {
+          "type": "message",
+          "settings": {
+            "text": "↩️ 14-day hassle-free returns"
+          }
+        },
+        "msg-3": {
+          "type": "message",
+          "settings": {
+            "text": "🔒 Secure checkout · Apple Pay & PayPal"
+          }
+        }
       },
-      "block_order": ["msg-1", "msg-2", "msg-3"],
-      "settings": { "style": "marquee" }
+      "block_order": [
+        "msg-1",
+        "msg-2",
+        "msg-3"
+      ],
+      "settings": {
+        "style": "marquee"
+      }
     },
     "header": {
       "type": "header",
-      "settings": { "menu": "main-menu", "sticky": true }
+      "settings": {
+        "menu": "main-menu",
+        "sticky": true
+      }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }

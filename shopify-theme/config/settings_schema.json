@@ -60,19 +60,19 @@
       },
       { "type": "header", "content": "Barra de frete grátis" },
       { "type": "checkbox", "id": "free_shipping_enabled", "label": "Mostrar barra de progresso de frete grátis", "default": true },
-      { "type": "number", "id": "free_shipping_threshold", "label": "Valor mínimo para frete grátis", "default": 199, "info": "Use o mesmo valor configurado em Configurações > Frete e entrega." },
+      { "type": "number", "id": "free_shipping_threshold", "label": "Valor mínimo para frete grátis", "default": 50, "info": "Na moeda principal da loja (ex.: 50 = £50). Use o mesmo valor configurado em Configurações > Frete e entrega." },
       { "type": "header", "content": "Oferta no carrinho (upsell)" },
       { "type": "product", "id": "cart_upsell_product", "label": "Produto sugerido" },
-      { "type": "text", "id": "cart_upsell_title", "label": "Título", "default": "Aproveite e leve também" },
+      { "type": "text", "id": "cart_upsell_title", "label": "Título", "default": "Complete your order" },
       { "type": "header", "content": "Selos de confiança" },
-      { "type": "text", "id": "cart_trust_text", "label": "Texto abaixo do botão de finalizar", "default": "Compra 100% segura · Pix, cartão e boleto" },
+      { "type": "text", "id": "cart_trust_text", "label": "Texto abaixo do botão de finalizar", "default": "Secure checkout · Cards, Apple Pay & PayPal" },
       { "type": "image_picker", "id": "cart_payment_image", "label": "Imagem das formas de pagamento" }
     ]
   },
   {
     "name": "Redes sociais e contato",
     "settings": [
-      { "type": "text", "id": "whatsapp_number", "label": "WhatsApp (botão flutuante)", "info": "Somente números com DDI e DDD. Ex.: 5511999999999. Deixe vazio para ocultar." },
+      { "type": "text", "id": "whatsapp_number", "label": "WhatsApp (botão flutuante)", "info": "Somente números com código do país. Ex. Reino Unido: 447700900000. Deixe vazio para ocultar." },
       { "type": "url", "id": "social_instagram", "label": "Instagram" },
       { "type": "url", "id": "social_facebook", "label": "Facebook" },
       { "type": "url", "id": "social_tiktok", "label": "TikTok" },

@@ -1,0 +1,24 @@
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <div class="section__header"><h2 class="section__title">{{ section.settings.heading }}</h2></div>
+    {%- endif -%}
+    {%- for block in section.blocks -%}
+      {% render block %}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Apps (avaliações etc.)",
+  "class": "section-apps",
+  "settings": [
+    { "type": "paragraph", "content": "Use para colocar widgets de apps em qualquer lugar da página, como a galeria de avaliações com fotos do Judge.me ou do Loox." },
+    { "type": "text", "id": "heading", "label": "Título" },
+    { "type": "checkbox", "id": "alt_bg", "label": "Fundo alternativo", "default": false }
+  ],
+  "blocks": [{ "type": "@app" }],
+  "presets": [{ "name": "Apps (avaliações etc.)" }]
+}
+{% endschema %}

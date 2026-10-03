@@ -1,63 +1,222 @@
 {
   "sections": {
-    "hero": { "type": "hero", "settings": {} },
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
     "trust": {
       "type": "trust-badges",
       "blocks": {
-        "b1": { "type": "badge", "settings": { "icon": "truck", "title": "Frete grátis", "text": "Para todo o Brasil" } },
-        "b2": { "type": "badge", "settings": { "icon": "lock", "title": "Compra segura", "text": "Site protegido com SSL" } },
-        "b3": { "type": "badge", "settings": { "icon": "return", "title": "Troca fácil", "text": "7 dias para devolução" } },
-        "b4": { "type": "badge", "settings": { "icon": "chat", "title": "Suporte", "text": "Atendimento humanizado" } }
+        "b1": {
+          "type": "badge",
+          "settings": {
+            "icon": "truck",
+            "title": "Free UK delivery",
+            "text": "On orders over £50"
+          }
+        },
+        "b2": {
+          "type": "badge",
+          "settings": {
+            "icon": "lock",
+            "title": "Secure checkout",
+            "text": "SSL encrypted payments"
+          }
+        },
+        "b3": {
+          "type": "badge",
+          "settings": {
+            "icon": "return",
+            "title": "Easy returns",
+            "text": "14-day money-back guarantee"
+          }
+        },
+        "b4": {
+          "type": "badge",
+          "settings": {
+            "icon": "chat",
+            "title": "Real support",
+            "text": "Friendly UK-based team"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
-      "settings": { "alt_bg": true }
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "alt_bg": true
+      }
     },
-    "categories": {
-      "type": "collection-list",
-      "blocks": {
-        "c1": { "type": "collection", "settings": {} },
-        "c2": { "type": "collection", "settings": {} },
-        "c3": { "type": "collection", "settings": {} },
-        "c4": { "type": "collection", "settings": {} }
-      },
-      "block_order": ["c1", "c2", "c3", "c4"],
+    "best-sellers": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Best sellers",
+        "collection": "all"
+      }
+    },
+    "video": {
+      "type": "video",
       "settings": {}
     },
-    "best-sellers": { "type": "featured-collection", "settings": { "heading": "Mais vendidos", "collection": "all" } },
-    "image-text": { "type": "image-with-text", "settings": { "alt_bg": true } },
+    "image-text": {
+      "type": "image-with-text",
+      "settings": {
+        "alt_bg": true
+      }
+    },
+    "steps": {
+      "type": "how-it-works",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Unbox it",
+            "text": "<p>Everything you need arrives in one box, ready to go.</p>"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Use it",
+            "text": "<p>Takes less than a minute a day — no experience needed.</p>"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Love the results",
+            "text": "<p>Feel the difference from the very first use.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {}
+    },
     "comparison": {
       "type": "comparison",
       "blocks": {
-        "r1": { "type": "row", "settings": { "feature": "Material premium" } },
-        "r2": { "type": "row", "settings": { "feature": "Garantia de satisfação" } },
-        "r3": { "type": "row", "settings": { "feature": "Envio com rastreio" } },
-        "r4": { "type": "row", "settings": { "feature": "Suporte humanizado" } }
+        "r1": {
+          "type": "row",
+          "settings": {
+            "feature": "Premium materials"
+          }
+        },
+        "r2": {
+          "type": "row",
+          "settings": {
+            "feature": "Money-back guarantee"
+          }
+        },
+        "r3": {
+          "type": "row",
+          "settings": {
+            "feature": "Tracked delivery"
+          }
+        },
+        "r4": {
+          "type": "row",
+          "settings": {
+            "feature": "Real human support"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4"],
-      "settings": { "alt_bg": false }
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "settings": {
+        "alt_bg": false
+      }
     },
     "testimonials": {
       "type": "testimonials",
       "blocks": {
-        "t1": { "type": "testimonial", "settings": {} },
-        "t2": { "type": "testimonial", "settings": {} },
-        "t3": { "type": "testimonial", "settings": {} }
+        "t1": {
+          "type": "testimonial",
+          "settings": {}
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {}
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {}
+        }
       },
-      "block_order": ["t1", "t2", "t3"],
-      "settings": { "alt_bg": true }
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "alt_bg": true
+      }
     },
     "faq": {
       "type": "faq",
       "blocks": {
-        "q1": { "type": "question", "settings": { "question": "Qual o prazo de entrega?", "answer": "<p>O prazo varia de acordo com a sua região. Você recebe o código de rastreio por e-mail assim que o pedido for enviado.</p>" } },
-        "q2": { "type": "question", "settings": { "question": "A compra é segura?", "answer": "<p>Sim. Nosso site usa criptografia SSL e os pagamentos são processados por plataformas certificadas.</p>" } },
-        "q3": { "type": "question", "settings": { "question": "Posso trocar ou devolver?", "answer": "<p>Sim. Você tem 7 dias após o recebimento para solicitar troca ou devolução, conforme o Código de Defesa do Consumidor.</p>" } },
-        "q4": { "type": "question", "settings": { "question": "Quais as formas de pagamento?", "answer": "<p>Pix, cartão de crédito em até 12x e boleto bancário.</p>" } }
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "How long does delivery take?",
+            "answer": "<p>Orders are dispatched within 1–2 working days. You'll receive a tracking link by email as soon as your order ships.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Is checkout secure?",
+            "answer": "<p>Yes. Our store is SSL encrypted and payments are processed by certified providers. We never see or store your card details.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return my order?",
+            "answer": "<p>Yes. You have 14 days from delivery to return your order for a full refund, in line with the UK Consumer Contracts Regulations.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Which payment methods do you accept?",
+            "answer": "<p>All major credit and debit cards, Apple Pay, Google Pay and PayPal.</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
       "settings": {}
     },
-    "newsletter": { "type": "newsletter", "settings": {} }
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {}
+    }
   },
-  "order": ["hero", "trust", "categories", "best-sellers", "image-text", "comparison", "testimonials", "faq", "newsletter"]
+  "order": [
+    "hero",
+    "trust",
+    "best-sellers",
+    "video",
+    "image-text",
+    "steps",
+    "comparison",
+    "testimonials",
+    "faq",
+    "newsletter"
+  ]
 }

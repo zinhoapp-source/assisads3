@@ -65,22 +65,22 @@
   "max_blocks": 6,
   "settings": [
     { "type": "checkbox", "id": "show_payment_icons", "label": "Mostrar ícones de pagamento", "default": true },
-    { "type": "text", "id": "legal_text", "label": "Texto legal (CNPJ, razão social)", "default": "CNPJ 00.000.000/0001-00" }
+    { "type": "text", "id": "legal_text", "label": "Texto legal (nome da empresa, Company No.)", "default": "Company No. 00000000" }
   ],
   "blocks": [
     {
       "type": "text",
       "name": "Texto",
       "settings": [
-        { "type": "text", "id": "title", "label": "Título", "default": "Sobre nós" },
-        { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Conte um pouco sobre sua loja.</p>" }
+        { "type": "text", "id": "title", "label": "Título", "default": "About us" },
+        { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Tell customers a little about your store.</p>" }
       ]
     },
     {
       "type": "menu",
       "name": "Menu",
       "settings": [
-        { "type": "text", "id": "title", "label": "Título", "default": "Links" },
+        { "type": "text", "id": "title", "label": "Título", "default": "Help" },
         { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
       ]
     },
@@ -89,7 +89,7 @@
       "name": "Newsletter",
       "limit": 1,
       "settings": [
-        { "type": "text", "id": "title", "label": "Título", "default": "Receba ofertas exclusivas" },
+        { "type": "text", "id": "title", "label": "Título", "default": "Get exclusive offers" },
         { "type": "richtext", "id": "text", "label": "Texto" }
       ]
     }

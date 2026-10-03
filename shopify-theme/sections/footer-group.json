@@ -8,23 +8,43 @@
         "about": {
           "type": "text",
           "settings": {
-            "title": "Sobre a loja",
-            "text": "<p>Produtos selecionados com qualidade garantida, entrega rápida e atendimento humanizado.</p>"
+            "title": "About us",
+            "text": "<p>Carefully selected products, fast UK delivery and friendly support.</p>"
           }
         },
-        "menu-1": { "type": "menu", "settings": { "title": "Institucional", "menu": "footer" } },
+        "menu-1": {
+          "type": "menu",
+          "settings": {
+            "title": "Help",
+            "menu": "footer"
+          }
+        },
         "contact": {
           "type": "text",
           "settings": {
-            "title": "Atendimento",
-            "text": "<p>Seg. a sex. das 9h às 18h<br>contato@sualoja.com.br</p>"
+            "title": "Contact",
+            "text": "<p>Mon–Fri, 9am–5pm<br>hello@yourstore.co.uk</p>"
           }
         },
-        "newsletter": { "type": "newsletter", "settings": { "title": "Receba ofertas exclusivas" } }
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Get exclusive offers"
+          }
+        }
       },
-      "block_order": ["about", "menu-1", "contact", "newsletter"],
-      "settings": {}
+      "block_order": [
+        "about",
+        "menu-1",
+        "contact",
+        "newsletter"
+      ],
+      "settings": {
+        "legal_text": "Company No. 00000000"
+      }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }

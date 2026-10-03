@@ -27,7 +27,7 @@
                   {%- when 'price_range' -%}
                     <div class="facets__price">
                       <input type="number" name="{{ filter.min_value.param_name }}" placeholder="0" {% if filter.min_value.value %}value="{{ filter.min_value.value | divided_by: 100.0 }}"{% endif %} min="0" step="0.01" aria-label="Min">
-                      <span>até</span>
+                      <span>{{ 'collections.price_to' | t }}</span>
                       <input type="number" name="{{ filter.max_value.param_name }}" placeholder="{{ filter.range_max | divided_by: 100.0 | ceil }}" {% if filter.max_value.value %}value="{{ filter.max_value.value | divided_by: 100.0 }}"{% endif %} min="0" step="0.01" aria-label="Max">
                     </div>
                 {%- endcase -%}

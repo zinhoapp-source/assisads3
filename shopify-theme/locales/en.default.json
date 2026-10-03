@@ -26,10 +26,14 @@
     "from": "From",
     "reviews": "{{ count }} reviews",
     "stock_low": "Only {{ count }} left in stock!",
-    "stock_ok": "In stock, ready to ship",
-    "delivery_html": "Arrives between <strong data-delivery-from></strong> and <strong data-delivery-to></strong>",
+    "stock_ok": "In stock, ready to dispatch",
+    "delivery_html": "Order now and get it between <strong data-delivery-from></strong> and <strong data-delivery-to></strong>",
     "choose_option": "Choose an option",
-    "quick_add": "Add"
+    "quick_add": "Add",
+    "installments_html": "or {{ count }} interest-free payments of <strong data-installment-value>{{ amount }}</strong>{{ provider }}",
+    "offer_save": "Save {{ percent }}%",
+    "verified": "Verified buyer",
+    "sample_title": "Product name"
   },
   "cart": {
     "title": "Your cart",
@@ -38,9 +42,9 @@
     "subtotal": "Subtotal",
     "checkout": "Checkout",
     "remove": "Remove",
-    "taxes": "Shipping and discounts calculated at checkout.",
-    "free_shipping_remaining_html": "You are <strong>{{ amount }}</strong> away from <strong>FREE SHIPPING</strong>",
-    "free_shipping_unlocked_html": "You unlocked <strong>FREE SHIPPING</strong> 🎉",
+    "taxes": "Delivery and discounts calculated at checkout.",
+    "free_shipping_remaining_html": "You're <strong>{{ amount }}</strong> away from <strong>FREE DELIVERY</strong>",
+    "free_shipping_unlocked_html": "You've unlocked <strong>FREE DELIVERY</strong> 🎉",
     "note": "Order notes",
     "discounts": "Discounts"
   },
@@ -50,7 +54,9 @@
     "filter": "Filter",
     "products_count": "{{ count }} products",
     "clear": "Clear filters",
-    "apply": "Apply"
+    "apply": "Apply",
+    "price_to": "to",
+    "category": "Category"
   },
   "search": {
     "title": "Search",
@@ -67,7 +73,13 @@
   },
   "newsletter": {
     "email": "Your email",
-    "subscribe": "Subscribe",
+    "subscribe": "Sign up",
     "success": "Thanks for subscribing!"
+  },
+  "countdown": {
+    "days": "days",
+    "hours": "hours",
+    "minutes": "mins",
+    "seconds": "secs"
   }
 }
